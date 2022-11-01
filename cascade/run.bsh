@@ -1,0 +1,5 @@
+
+for i in {1..14}
+do
+  ../../bin/mace4 -n6 -N6 -A1 -m-1 -f inputs/monoid_${i}.in >> 6.log
+done

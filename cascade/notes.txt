@@ -1,0 +1,163 @@
+
+
+order k (k in [6,7,8,9]):
+
+x * 0 = x. 
+
+0 * x = x.
+
+(x * y) * z = x * (y * z). 
+
+x^n = x ^2n. %n in [1...2k+2]; 
+
+x^(n-1) != x^2(n-1).
+
+
+
+%Goal
+
+((xy)^n (yx)^n(xy)^n)^n = (xy)^n.
+
+Please keep the times of isofilter.
+
+Then please, of the computed semigroups, send me:
+
+All non-isomorphic models of order 6; 
+
+All models of order 7 that do not contain isomorphic copies of any of the models of order 6;
+
+All models of order 8 that do not contain isomorphic copies of one of the retained models of orders 7 or 6;
+
+All models of order 9 that do not contain isomorphic copies of one of the retained models of orders 8,7 or 6. 
+
+========================================
+
+
+(1) the input contains x != x^2.  But semigroup always contains at least one idempotent, so it will always fail.
+
+
+
+x != x^2 is "Exists x such that x != x^2".
+
+In Prover9 syntax: a != a * a. 
+
+The same for the other.
+
+
+
+Here is the high level problem to see if this is clear now. 
+
+I need all semigroups of order k (for k in [6,7,8,9]) that satisfy x^n = x^2n and fail 
+
+ ((xy)^n (yx)^n(xy)^n)^n = (xy)^n.
+
+
+
+This is the problem. 
+
+
+
+If k=6, then there are semigroups satisfying x^n = x^2n only when n in [ 1, 2, 3, 4, 5, 6 ].
+
+If k=7, then there are semigroups satisfying x^n = x^2n only when n in [ 1, 2, 3, 4, 5, 6, 7, 10, 12 ]. 
+
+If k=8, then there are semigroups satisfying x^n=x^2n only when n in [ 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15 ]. 
+
+  
+
+So, when k=6, the inputs will be: 
+
+
+
+a. find all semigroups of order 6 such that x=x^2 and ((xy)^n (yx)^n(xy)^n)^n = (xy)^n is false (for n=1). 
+
+b. find all semigroups of order 6 such that x2=x^4 and ((xy)^n (yx)^n(xy)^n)^n = (xy)^n is false (for n=2). 
+
+Of course, if x=x^2, then x^2 = x^4 and hence, if we do not remove the semigroups that satisfy x=x^2, we are generating them twice. Is this problematic? No, it is just doing the same job twice. 
+
+
+
+c. find all semigroups of order 6 such that x^3 = x^6 and  ((xy)^n (yx)^n(xy)^n)^n = (xy)^n is false (for n=3). 
+
+
+
+etc. until 
+
+
+
+z. find all semigroups of order 6 such that x^6 = x^12 and  ((xy)^n (yx)^n(xy)^n)^n = (xy)^n is false (for n=6). 
+
+
+
+Then we remove isomorphic models, and that is the end of the story when k=6. Say we are left with two order 6 models (say A and B). 
+
+
+
+%%%%
+
+
+
+Now we move to 7 and do exactly the same thing. Generate all order 7 semigroups that satisfy x^n=x^2n and fail 
+
+ ((xy)^n (yx)^n(xy)^n)^n = (xy)^n . The possible n are [ 1, 2, 3, 4, 5, 6, 7, 10, 12 ].
+
+
+
+Now we discard all the isomorphic models and get, say, 1000 models. But some of them will contain some of the order 6 models. Contain means there is a subsemigroup of the order 7 isomorphic to A or to B (the two order 6 models). And these that contain some order 6 model should be discarded too so that we can say "Either it is one of these models, or contain one order 6 model A or B". 
+
+
+
+And then we do the same for order 8. After discarding ismorphic models, we discard also the models containing A, B or the models of order 7 found in the step above. 
+
+
+
+Finally, it is necessary to do this for order 9. The problem is that for 9 we do not know the list of n such that there are semigroups satisfying x^n= x^2n. I guess that n in [1..20] will cover all cases. 
+
+
+
+ 
+
+(2) So for each n between 1 and 2k+2, we run the model generation.  So there will be many sets of models of order k. 
+
+
+
+I do not understand, but I hope the explanation above makes everything clear. 
+
+ 
+
+(3) How does a model of order k contain a model of order k - 1? 
+
+
+
+A model of order k, S, contains a model T of order l<k  if there is a monomorphism f: T->S. 
+
+
+
+But probably the best thing to do is the following. 
+
+
+
+Suppose A of order 6 is SmallSemigroup(6,123). 
+
+Let sem be an order 7 semigroup. Now: 
+
+gap>Set(Filtered(Combinations(Elements(sem)),j->Size(j)>0),i->IdSmallSemigroup(Semigroup(i)));
+
+
+
+[ [ 1, 1 ], [ 2, 1 ], [ 3, 1 ], [ 4, 1 ], [ 4, 2 ], [ 5, 1 ], [ 5, 2 ], [ 6, 4 ] ]
+
+
+
+
+
+
+
+This gives all subsemigroups of sem and as we can see, none of them is A. So sem does not contain A. 
+
+
+
+
+
+
+
