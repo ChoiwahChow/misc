@@ -5,6 +5,6 @@ for i in {1..14}
 do
   mkdir working_${k}_${i}
   cd working_${k}_${i}
-  # ../../../bin/mace4 -n6 -N6 -A1 -m-1 -f ../inputs/monoid_${i}.in >> ${k}_${i}.log &
+  ../../../bin/mace4 -n6 -N6 -A1 -m-1 -f ../inputs/monoid_${i}.in >> ${k}_${i}.log &
   cd ..
 done
