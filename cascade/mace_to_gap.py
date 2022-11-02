@@ -24,12 +24,12 @@ def conv_a_model(fp, delim):
     return arr
 
 
-def conv_a_file(fn, delim):
+def conv_a_file(fn, function, delim):
     all_models = list()
     with (open(fn)) as fp:
         line = fp.readline()
         while line:
-            if "function" in line:
+            if function in line:
                 model = conv_a_model(fp, delim)
                 all_models.append(model)
             line = fp.readline()
@@ -37,10 +37,16 @@ def conv_a_file(fn, delim):
 
 
 if __name__ == "__main__":
-    delim = "])])."
+    #delim = "])])."
+    delim = "])"
+    function = "function(*"
+    k = 6
     # print(conv_a_row("    [[1,2,3,4,5,6],"))
-    all_models = conv_a_file("models_200.out", delim)
+    all_models = conv_a_file("models_200.out", function, delim)
+    print(f"models{k} := [")
     for m in all_models:
-        print(m)
+        print(m, end="")
+        print(",")
+    print("];")
 
     # print(all_models)
