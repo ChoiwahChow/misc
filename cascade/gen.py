@@ -36,7 +36,8 @@ def gen_input(n):
 
     main_clause = gen_main_n(n) + "."
     negate = list()
-    for x in range(1, n):
+    max_exist = min(n, 5)
+    for x in range(1, max_exist):
         negate.append(gen_exists(x) + ".")
     exists_clause = "\n".join(negate)
 
