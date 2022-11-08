@@ -5,10 +5,10 @@ Read("outputs/monoids_6.g");
 Read("outputs/monoids_7.g");
 Read("outputs/monoids_8.g");
 Read("outputs/monoids_9.g");
-Read("non_iso/monoids_10_2.g");
+Read("non_iso/monoids_10.g");
 
 # prepare output file
-fn := "outputs/monoids_10_2.g";;
+fn := "outputs/monoids_10.g";;
 PrintTo(fn, "monoids10");; AppendTo(fn, " := [\n");;
 
 
