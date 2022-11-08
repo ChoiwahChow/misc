@@ -7,17 +7,17 @@ Read("non_iso/monoids_8.g");
 
 x := models8;;
 
-for y in [1..2] do
-    x := Filtered(x, i->CreamMonomorphismAlgebras([monoids6[y]], [i]) = fail);;
-od; time;
+for y in monoids6 do
+    x := Filtered(x, i->CreamMonomorphismAlgebras([y], [i]) = fail);;
+od; 
 
-for y in [1..5] do
-    x := Filtered(x, i->CreamMonomorphismAlgebras([monoids7[y]], [i]) = fail);;
-od; time;
+for y in monoids7 do
+    x := Filtered(x, i->CreamMonomorphismAlgebras([y], [i]) = fail);;
+od; 
 
 
 # prepare output file
-fn := "outputs/monoids_8a.g";;
+fn := "outputs/monoids_8.g";;
 PrintTo(fn, "monoids8");; AppendTo(fn, " := [\n");;
 
 for p in x do
