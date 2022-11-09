@@ -30,14 +30,14 @@ def gen_goals(n):
     return f"{left} = {p1}"
 
 
-def gen_input(n):
+def gen_input(n, min_ineq, max_ineq):
     goals = gen_goals(n)
     monoid_section = "formulas(assumptions).\n(x * y) * z = x * (y * z).\nx * 0 = x.\n0 * x = x.\nend_of_list.\n" 
 
     main_clause = gen_main_n(n) + "."
     negate = list()
-    max_exist = min(n, 5)
-    for x in range(1, max_exist):
+    max_exist = min(n, max_ineq+1)
+    for x in range(min_ineq, max_exist):
         negate.append(gen_exists(x) + ".")
     exists_clause = "\n".join(negate)
 
@@ -51,8 +51,9 @@ def gen_input(n):
 
 
 if __name__ == "__main__":
-    for n in range(1, 21):
-        inputs = gen_input(n)
+    max_ineq = 2
+    for n in range(1, 25):
+        inputs = gen_input(n, 2, max_ineq)
         with (open(f"inputs/monoid_{n}.in", "w")) as fp:
             fp.write(inputs)
 
