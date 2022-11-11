@@ -10,10 +10,9 @@ Read("non_iso/monoids_11.g");
 
 # prepare output file
 fn := "outputs/monoids_11.g";;
-PrintTo(fn, "monoids11");; AppendTo(fn, " := [\n");;
 
 
-x := models10;;
+x := models11;;
 
 for y in monoids6 do
     x := Filtered(x, i->CreamMonomorphismAlgebras([y], [i]) = fail);;
@@ -42,6 +41,7 @@ od;
 Print("Done with order 10, length="); Print(Length(x)); Print("\n");
 
 # Print models
+PrintTo(fn, "monoids11");; AppendTo(fn, " := [\n");;
 for p in x do
   AppendTo(fn, p); AppendTo(fn, ",\n");
 od;
