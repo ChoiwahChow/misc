@@ -1,6 +1,0 @@
-
-for i in {1..20}
-do
-  echo $i
-  ../../bin/mace4 -n9 -N9 -P1 -t1000 -f inputs/monoid_${i}.in >> 9.log
-done

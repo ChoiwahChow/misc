@@ -13,6 +13,7 @@ PrintTo(fn, "monoids10");; AppendTo(fn, " := [\n");;
 
 
 x := models10;;
+Print(Length(x));  Print("\n");
 
 for y in monoids6 do
     x := Filtered(x, i->CreamMonomorphismAlgebras([y], [i]) = fail);;
