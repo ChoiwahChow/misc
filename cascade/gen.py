@@ -52,7 +52,7 @@ def gen_input(n, min_ineq, max_ineq):
 
 if __name__ == "__main__":
     max_ineq = 2
-    for n in range(1, 25):
+    for n in range(1, 31):
         inputs = gen_input(n, 2, max_ineq)
         with (open(f"inputs/monoid_{n}.in", "w")) as fp:
             fp.write(inputs)
