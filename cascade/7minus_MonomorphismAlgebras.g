@@ -1,5 +1,5 @@
 
-LoadPackage("magmaut");;
+LoadPackage("cream");;
 
 Read("outputs/monoids_6.g");
 Read("non_iso/monoids_7.g");
