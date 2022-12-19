@@ -40,7 +40,7 @@ if __name__ == "__main__":
     #delim = "])])."
     delim = "])"
     function = "function(*"
-    k = 9
+    k = 11
     # print(conv_a_row("    [[1,2,3,4,5,6],"))
     all_models = conv_a_file(f"non_iso/non_iso_monoids_{k}.out", function, delim)
     print(f"models{k} := [")

@@ -1,8 +1,8 @@
 
-# order k
-k=6
-t=$((2*k + 2))
-for ((i=1; i<=${t}; i++))
+# order 11
+k=11
+t=30
+for ((i=3; i<=${t}; i++))
 do
   mkdir -p working_${k}_${i}
   cd working_${k}_${i}
