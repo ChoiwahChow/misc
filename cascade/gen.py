@@ -1,5 +1,7 @@
 #! /usr/bin/python3
 
+import os
+
 def power_n(base, n):
     product = base
     for x in range(1, n):
@@ -52,6 +54,7 @@ def gen_input(n, min_ineq, max_ineq):
 
 if __name__ == "__main__":
     max_ineq = 2
+    os.makedirs("inputs", exist_ok=True)
     for n in range(1, 31):
         inputs = gen_input(n, 2, max_ineq)
         with (open(f"inputs/monoid_{n}.in", "w")) as fp:
