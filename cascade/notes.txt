@@ -156,6 +156,21 @@ gap>Set(Filtered(Combinations(Elements(sem)),j->Size(j)>0),i->IdSmallSemigroup(S
 This gives all subsemigroups of sem and as we can see, none of them is A. So sem does not contain A. 
 
 
+=============================================================================================
+
+Joao Araujo <jjrsga@gmail.com>
+
+Tue, Nov 15, 7:55 AM
+
+to me, Mikoláš
+
+
+
+Also: can we go to 12? 
+
+The possible n are [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 18, 20, 21, 24, 28, 30, 35, 42, 60 ]. 
+
+It would be very important to get to 12. We should see where ar ethe problems (need a larger computer? Need some better algorithm?) but it would be very welcome by mathematicians the 12 guys..... 
 
 
 
