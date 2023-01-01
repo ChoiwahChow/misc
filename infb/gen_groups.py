@@ -28,7 +28,7 @@ powers12 = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 18, 20, 21, 24, 28, 30,
 all_powers = {10: powers10, 11: powers11, 12: powers12}
 
 def gen_gap(k, power):
-    command = f'gap -c "n:={power};; k:={k};;" < infb.g'
+    command = f'gap -c "n:={power};; k:={k};;" < groups.g'
     print(command)
     subprocess.call(command, shell=True)
 
