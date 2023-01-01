@@ -3,7 +3,7 @@
 
 # power n
 # order k
-# usage:  gap -c "n:=3;; k:=10;;" < infb.g
+# usage:  gap -c "n:=3;; k:=10;;" < groups.g
 
 all:=AllSmallGroups([1..k]);; 
 fil:= Filtered(all,G->ForAll(G,g->g^(2*n)=g^n));; 
