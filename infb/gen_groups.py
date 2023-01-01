@@ -48,6 +48,6 @@ if __name__ == "__main__":
     os.makedirs(data_dir, exist_ok=True)
 
     with open('groups.py', 'w') as fp:
-        fp.write(f'groups = [None] * {max(all_powers)+1}\n\n')
+        fp.write(f'groups = [[]] * {max(all_powers)+1}\n\n')
     for n in all_powers:
         gen_gap(n)

@@ -1,4 +1,4 @@
-groups = [None] * 61
+groups = [[]] * 61
 
 groups[2] = [
 [ [ 0, 1 ], [ 1, 0 ] ],
