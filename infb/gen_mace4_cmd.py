@@ -22,6 +22,10 @@ The possible values for n=11 are:
 import os
 import groups
 
+powers = [[]] * 15
+powers[10] = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 15, 20, 21, 30 }
+powers[11] = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 18, 20, 21, 24, 28, 30 }
+powers[12] = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 18, 20, 21, 24, 28, 30, 35, 42, 60 }
 
 def gen_cmd(k, n, pos, grp, bin_dir, in_dir, grp_dir):
     """ generate command line for executing mace4
@@ -43,11 +47,17 @@ if __name__ == "__main__":
     groups_dir = os.path.join(in_dir, "groups")
 
     cmds = []
-    for n, grps in enumerate(groups.groups):
+    for n in powers[k]:
+        grps = groups.groups[n]
         for pos, grp in enumerate(grps):
             cmd = gen_cmd(k, n, pos, grp, bin_dir, in_dir, groups_dir)
             if cmd:
                 cmds.append(cmd)
+
+    fn = os.path.join("data", f"mace4_cmd_{k}.bat")
+    with open(fn, "w") as fp:
+        for cmd in cmds:
+            fp.write(cmd + os.linesep)
 
     print(len(cmds))
 
