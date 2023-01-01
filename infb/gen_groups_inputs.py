@@ -41,11 +41,13 @@ def gen_inputs(grp_dir, n, pos, grp):
 
 if __name__ == "__main__":
     in_dir = 'inputs'
-    groups_dir = os.path.join(in_dir, "groups")
 
-    os.makedirs(groups_dir, exist_ok=True)
-
-    for n, grps in enumerate(groups.groups):
-        for pos, grp in enumerate(grps):
-            gen_inputs(groups_dir, n, pos, grp)
+    # iterate over each order k
+    for k, kgrps in groups.groups.items():
+        groups_dir = os.path.join(in_dir, f"groups_{k}")
+        os.makedirs(groups_dir, exist_ok=True)
+        # for each k, iterate over all n
+        for n, groups in kgrps.items():
+            for pos, grp in enumerate(groups): 
+                gen_inputs(groups_dir, n, pos, grp)
 

@@ -44,11 +44,11 @@ if __name__ == "__main__":
     k = 10
     bin_dir = os.path.join("..", "..", "bin")
     in_dir = 'inputs'
-    groups_dir = os.path.join(in_dir, "groups")
+    groups_dir = os.path.join(in_dir, f"groups_{k}")
 
     cmds = []
     for n in powers[k]:
-        grps = groups.groups[n]
+        grps = groups.groups[k][n]
         for pos, grp in enumerate(grps):
             cmd = gen_cmd(k, n, pos, grp, bin_dir, in_dir, groups_dir)
             if cmd:
