@@ -22,15 +22,13 @@ The possible values for n=11 are:
 import os
 import subprocess
 
-k = 10
 powers10 = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 15, 20, 21, 30 }
 powers11 = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 18, 20, 21, 24, 28, 30 }
 powers12 = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 18, 20, 21, 24, 28, 30, 35, 42, 60 }
+all_powers = {10: powers10, 11: powers11, 12: powers12}
 
-
-def gen_gap(power):
-    gap_code = f'all:=AllSmallGroups([1..12]);; fil:= Filtered(all,G->ForAll(G,g->g^{power*2}=g^{power}));; for G in fil do Print(MultiplicationTable(G),"\n"); od;'
-    command = f"gap -c 'n:={power};;' < infb.g"
+def gen_gap(k, power):
+    command = f'gap -c "n:={power};; k:={k};;" < infb.g'
     print(command)
     subprocess.call(command, shell=True)
 
@@ -40,14 +38,9 @@ def gen_gap(power):
 
 
 if __name__ == "__main__":
-    all_powers = powers10.union(powers11.union(powers12))
-    in_dir = 'inputs'
-    data_dir = "data"
-
-    os.makedirs(in_dir, exist_ok=True)
-    os.makedirs(data_dir, exist_ok=True)
-
     with open('groups.py', 'w') as fp:
-        fp.write(f'groups = [[]] * {max(all_powers)+1}\n\n')
-    for n in all_powers:
-        gen_gap(n)
+        fp.write('from collections import defaultdict' + os.linesep)
+        fp.write('groups = defaultdict(dict)\n\n')
+    for k, po in all_powers.items():
+        for n in po:
+            gen_gap(k, n)

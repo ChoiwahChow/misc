@@ -22,6 +22,9 @@ The possible values for n=11 are:
 import os
 import groups
 
+powers10 = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 15, 20, 21, 30 }
+powers11 = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 18, 20, 21, 24, 28, 30 }
+powers12 = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 18, 20, 21, 24, 28, 30, 35, 42, 60 }
 
 def gen_inputs(grp_dir, n, pos, grp):
     fn = os.path.join(grp_dir, f"groups_{n}_{pos}.in")

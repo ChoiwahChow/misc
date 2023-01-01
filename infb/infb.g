@@ -2,12 +2,13 @@
 # file: infb.g
 
 # power n
-# usage:  gap -c "n:=3;;" < infb.g
+# order k
+# usage:  gap -c "n:=3;; k:=10;;" < infb.g
 
-all:=AllSmallGroups([1..12]);; 
+all:=AllSmallGroups([1..k]);; 
 fil:= Filtered(all,G->ForAll(G,g->g^(2*n)=g^n));; 
 
-obj_name := Concatenation("groups[", String(n), "]");;
+obj_name := Concatenation("groups[", String(k), "][", String(n), "]");;
 dir := Directory(".");
 fn := Filename(dir, "groups.py");;
 AppendTo(fn, obj_name, " = [\n");;
