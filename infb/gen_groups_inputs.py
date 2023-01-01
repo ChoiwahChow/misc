@@ -24,7 +24,7 @@ import groups
 
 
 def gen_inputs(grp_dir, n, pos, grp):
-    fn = os.path.join(grp_dir, f"group_{n}_{pos}.in")
+    fn = os.path.join(grp_dir, f"groups_{n}_{pos}.in")
     order = len(grp)
     with open(fn, "w") as fp:
         fp.write(f"formulas(group{n})." + os.linesep)
