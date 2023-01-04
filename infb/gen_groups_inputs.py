@@ -31,10 +31,12 @@ def gen_inputs(grp_dir, n, pos, grp):
     order = len(grp)
     with open(fn, "w") as fp:
         fp.write(f"formulas(group{n})." + os.linesep)
+        x_values = [f"x = {str(x)}" for x in range(0, order)]
         for r, row in enumerate(grp):
             for c, cell in enumerate(row):
                 fp.write(f'{r} * {c} = {cell}. ')
             fp.write(os.linesep)
+        fp.write(f'x * y <-> x = y & ({" | ".join(x_values)}).' + os.linesep)
         fp.write('end_of_list.' + os.linesep)
 
 

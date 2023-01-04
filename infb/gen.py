@@ -38,7 +38,7 @@ def gen_goals(n):
 
 def gen_input(n, min_ineq, max_ineq):
     goals = gen_goals(n)
-    monoid_section = "formulas(assumptions).\n(x * y) * z = x * (y * z).\nx * 0 = x.\n0 * x = x.\nend_of_list.\n" 
+    monoid_section = "formulas(assumptions).\n(x * y) * z = x * (y * z).\nx * 0 = x.\n0 * x = x.\n" 
 
     main_clause = gen_main_n(n) + "."
     negate = list()
@@ -47,7 +47,7 @@ def gen_input(n, min_ineq, max_ineq):
         negate.append(gen_exists(x) + ".")
     exists_clause = "\n".join(negate)
 
-    add_section = f"formulas(sos).\n{main_clause}\n\n{exists_clause}\nend_of_list.\n"
+    add_section = f"{main_clause}\n{exists_clause}\nend_of_list.\n"
 
     goal_section = f"formulas(goals).\n{goals}.\nend_of_list.\n"
 
