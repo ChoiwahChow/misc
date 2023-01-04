@@ -3,6 +3,7 @@
 
 # power n
 # order k
+# k is not an absolutely needed parameter in that we could have used a big number like 12.
 # usage:  gap -c "n:=3;; k:=10;;" < groups.g
 
 all:=AllSmallGroups([1..k]);; 
