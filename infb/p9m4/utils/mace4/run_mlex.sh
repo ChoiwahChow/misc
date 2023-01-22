@@ -6,7 +6,7 @@ for mo in $mofiles; do
   fs0=$(wc -l $mo | awk '{print $1}')
   if [ $fs0 -gt 0 ]; then
     ../../bin/mlex -b1lrumi < $mo >> non_iso_models.out
-    wc -l $mo >> models.done
+    wc -l $mo >> models_count.out
   fi
   rm $mo
 done
@@ -17,7 +17,7 @@ fi
 
 fs=$(wc -l "non_iso_models.out" | awk '{print $1}')
 
-if [ $fs -gt 70000000 ]
+if [ $fs -gt 28000000 ]
 then
   ../../bin/mlex -b1lrumid < non_iso_models.out >> level1_non_iso_models.out
   rm non_iso_models.out

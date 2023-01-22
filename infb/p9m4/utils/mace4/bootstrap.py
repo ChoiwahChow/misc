@@ -40,12 +40,11 @@ import multi_cube_analyzer as analyzer
 import run_cubes
 
 top_data_dir = "utils/mace4/working"
-num_threads  = 24
 
 
 request_work_file = "request_work.txt"
 work_file = "release_work.out"
-print_models = "A3"  # P0 - don't output models, A1 - output models, P1 print models, A2 new out file every 5 mil models, A3 call scripts to process models.out every 1 million models
+print_models = "A3"  # P0 - don't output models, A1 - output models, P1 print models
 
 
 def get_data_dir(algebra, order):
@@ -113,7 +112,7 @@ def gen_all_cubes(algebra, order, power, target_cube_length, threshold, mace4_ex
     return propagated_models_count
     
     
-def run_all_cubes(algebra, order, power, target_cube_length, mace4_exe, mlex_exe, cubes_options, batch_size=100):
+def run_all_cubes(algebra, order, power, target_cube_length, mace4_exe, mlex_exe, cubes_options, num_threads, batch_size=1000000000):
     # print(f'{datetime.now().strftime("%d/%m/%Y %H:%M:%S")}, run all cubes...', flush=True)
     input_file = f"../inputs/monoids_{power}.in"
     master_cube_file = f"{top_data_dir}/{algebra}{order}/cubes_{order}_{target_cube_length}.out"
@@ -149,12 +148,13 @@ if __name__ == "__main__":
     mace4_exe = "../bin/mace4"
     cubes_options = 1      # bit-0  set to 1 if use work-stealing
     threshold = 1000       # invariants will be used if number of cubes is above threshhold. Large number to disable invariants
+    num_threads = 20
 
     algebra = sys.argv[1]
     order = int(sys.argv[2])
     target_cube_length = int(sys.argv[3])
     power = int(sys.argv[4])
-    batch_size = int(sys.argv[5])
+    num_threads = int(sys.argv[5])
     cubes_run_stage = 0
     if len(sys.argv) >= 7:
         cubes_run_stage = int(sys.argv[6])
@@ -186,7 +186,7 @@ if __name__ == "__main__":
         os.makedirs(f"utils/mace4/working/{algebra}{order}", exist_ok=True)
         shutil.copy(f"cubes/{cube_file}", f"utils/mace4/working/{algebra}{order}/{cube_file}")
     if cubes_run_stage == 0 or cubes_run_stage == 2:
-        run_all_cubes(algebra, order, power, target_cube_length, mace4_exe, mlex_exe, cubes_options, batch_size)
+        run_all_cubes(algebra, order, power, target_cube_length, mace4_exe, mlex_exe, cubes_options, num_threads)
     t3 = time.time()
     runtime = t3 - t2
     collect_stat(algebra, order, target_cube_length, cubes_options, threshold, propagated_models_count, gen_cube_time, runtime)
