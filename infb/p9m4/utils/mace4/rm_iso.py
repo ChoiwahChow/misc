@@ -35,7 +35,7 @@ def print_models(k, fn, models_to_write):
         ofp.write("];")
 
 
-def filter_a_file(fp, all_keys, k, out_file_0, max_hash_models, add_to_hash=True, max_models_per_file = 10000000000, function = "function(*", delim = "])"):
+def filter_a_file(fp, all_keys, k, out_file_0, max_hash_models, verbose, add_to_hash=True, max_models_per_file = 10000000000, function = "function(*", delim = "])"):
     """ unique models are appended to the out_file_0 files
     fp: input file pointer, could be sys.stdin
     k:  order of algebra
@@ -71,8 +71,8 @@ def filter_a_file(fp, all_keys, k, out_file_0, max_hash_models, add_to_hash=True
                     ofp.close()
                     ofp = open(out_file, "a")
                 count += 1
-                # if count % 1000000 == 0:
-                #   print(f"Done {count} models")
+                if verbose and count % 1000000 == 0:
+                    print(f"Done {count} models")
         line = fp.readline()
     ofp.close()
     return model_count
@@ -122,7 +122,7 @@ if __name__ == "__main__":
         fp = open(args.in_file)
     else:
         fp = sys.stdin
-    model_count = filter_a_file(fp, all_keys, k, out_file, max_hash_size, add_to_hash, ck, function, delim)
+    model_count = filter_a_file(fp, all_keys, k, out_file, max_hash_size, args.verbose, add_to_hash, ck, function, delim)
     if args.in_file:
         fp.close()
 
