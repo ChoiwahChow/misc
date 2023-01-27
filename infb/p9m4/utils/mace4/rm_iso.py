@@ -54,6 +54,9 @@ def filter_a_file(fp, all_keys, k, out_file_0, max_hash_models, verbose, add_to_
         if line.startswith("interp"):
             model = list()
             model.append(line)
+            count += 1
+            if verbose and count % 1000000 == 0:
+                print(f"Done {count} models, Hashed models: {len(all_keys)}")
         elif function in line:
             model.append(line)
             arr, key = model_key(fp, delim)
@@ -70,9 +73,6 @@ def filter_a_file(fp, all_keys, k, out_file_0, max_hash_models, verbose, add_to_
                     out_file = f'{out_file_0}.{f_count}'
                     ofp.close()
                     ofp = open(out_file, "a")
-                count += 1
-                if verbose and count % 1000000 == 0:
-                    print(f"Done {count} models")
         line = fp.readline()
     ofp.close()
     return model_count
@@ -113,6 +113,7 @@ if __name__ == "__main__":
         print(f"output hash table flag: {output_hash}")
         print(f"output hash table #model limit: {max_hash_size}")
         print(f"skip add to hash flag: {not add_to_hash}")
+        print(f"verbose: {args.verbose}")
 
     function = "function(*"
     all_keys = dict()
@@ -130,4 +131,4 @@ if __name__ == "__main__":
         pickle.dump(all_keys, open(hash_file, "wb"))
 
     if args.verbose:
-        print(f"Debut: Found {model_count} non-iso models.")
+        print(f"Debug: Found {model_count} non-iso models.")
