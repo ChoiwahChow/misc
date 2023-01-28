@@ -7,10 +7,10 @@ Read("outputs/monoids_8.g");
 Read("outputs/monoids_9.g");
 Read("outputs/monoids_10.g");
 Read("outputs/monoids_11.g");
-Read("non_iso/monoids_12.g");
+Read(Concatenation("non_iso/monoids_12.g", suffix));
 
 # prepare output file
-fn := "outputs/monoids_12.g";;
+fn := Concatenation("outputs/monoids_12.g", suffix);;
 
 
 x := models12;;
