@@ -7,7 +7,6 @@ if [ $fs0 -gt 0 ]; then
     wc -l models.out >> models_count.out
     rm models.out
 fi
-rm models.out
 
 if [ ! -f "non_iso_models.out" ]; then
   >> non_iso_models.out
