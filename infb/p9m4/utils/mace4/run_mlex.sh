@@ -23,7 +23,7 @@ then
 
   if [ $fs1 -gt 70000000 ]
   then
-    ../utils/mace4/rm_iso.py 12 1000000000 level1_non_iso_models.out level2_non_iso_models.out
+    ../utils/mace4/rm_iso.py -i level1_non_iso_models.out -o level2_non_iso_models.out
     rm level1_non_iso_models.out
   fi
 fi
