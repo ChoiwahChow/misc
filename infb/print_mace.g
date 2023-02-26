@@ -13,7 +13,7 @@ print_bin_mace := function(fn, m2, counter)
     for j in [1..order] do
       if el_counter = order * order - 1 then comma := ""; fi;
       el_counter := el_counter + 1;
-      if m2[i][j] < 11:
+      if m2[i][j] < 11 then
         el := Concatenation(" ", String(m2[i][j]-1));
       else
         el := String(m2[i][j]-1);
