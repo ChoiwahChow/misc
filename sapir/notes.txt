@@ -1,0 +1,3 @@
+
+
+ls -ltr *_12_16_*/models.out; cat *_12_16_*/models_count.out | awk -F' ' '{sum+=$FF/14}; END{print sum}'; du -sm .; df -m .; date
