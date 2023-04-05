@@ -50,7 +50,7 @@ def run_process(id, slot_id, thread_slots, order, input_file, cubes, print_model
         #for x in cube:
         #    fp.write(f"{x}\n")
 
-    cmd = f"cd {working_dir}; {mace4} -n{order} -N{order} -{print_models} -m-1 -b10000 -d{cubes_options} -O3 -f {input_file} >> mace.log 2>&1; ../utils/mace4/run_mlex.sh" 
+    cmd = f"cd {working_dir}; {mace4} -n{order} -N{order} -{print_models} -m-1 -b10000 -d{cubes_options} -O3 -f {input_file} >> mace.log 2>&1; ../utils/mace4/run_hook.sh" 
     # print(f'cube: {cmd}\n', flush=True)
     # subprocess.run(f"cd {working_dir}; {mace4} -n{order} -N{order} -{print_models} -m-1 -O1 -M4 -b10000 -d{cubes_options} -f {input_file} >> mace.log 2>&1", 
     subprocess.run(cmd, capture_output=False, text=True, check=False, shell=True)      # ; mv models.out {id}.out",

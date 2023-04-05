@@ -56,7 +56,7 @@ def filter_a_file(fp, all_keys, k, out_file_0, max_hash_models, verbose, add_to_
             model.append(line)
             count += 1
             if verbose and count % 1000000 == 0:
-                print(f"Done {count} models, Hashed models: {len(all_keys)}")
+                print(f"Done {count} models, Hashed models: {len(all_keys)}", flush=True)
         elif function in line:
             model.append(line)
             arr, key = model_key(fp, delim)
@@ -113,7 +113,7 @@ if __name__ == "__main__":
         print(f"output hash table flag: {output_hash}")
         print(f"output hash table #model limit: {max_hash_size}")
         print(f"skip add to hash flag: {not add_to_hash}")
-        print(f"verbose: {args.verbose}")
+        print(f"verbose: {args.verbose}", flush=True)
 
     function = "function(*"
     all_keys = dict()

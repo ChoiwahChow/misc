@@ -89,7 +89,7 @@ def gen_all_cubes(algebra, order, power, target_cube_length, threshold, mace4_ex
     os.makedirs(data_dir, exist_ok=True)
 
     seq = [target_cube_length]
-    input_file = f"../inputs/monoids_{power}.in"
+    input_file = f"../inputs/sapir_{power}.in"
     propagated_models_count = 0
     working_dir_prefix = get_working_dir(algebra, order, 2)    
 
@@ -114,7 +114,7 @@ def gen_all_cubes(algebra, order, power, target_cube_length, threshold, mace4_ex
     
 def run_all_cubes(algebra, order, power, target_cube_length, mace4_exe, mlex_exe, cubes_options, num_threads, batch_size=1000000000):
     # print(f'{datetime.now().strftime("%d/%m/%Y %H:%M:%S")}, run all cubes...', flush=True)
-    input_file = f"../inputs/monoids_{power}.in"
+    input_file = f"../inputs/sapir_{power}.in"
     master_cube_file = f"{top_data_dir}/{algebra}{order}/cubes_{order}_{target_cube_length}.out"
     cube_file = f"{top_data_dir}/{algebra}{order}/cubes_{order}_{target_cube_length}_batch.out"
     with open(master_cube_file) as fp:
@@ -127,11 +127,6 @@ def run_all_cubes(algebra, order, power, target_cube_length, mace4_exe, mlex_exe
         working_dir_prefix = get_working_dir(algebra, order, target_cube_length)
         run_cubes.run_mace(mace4_exe, input_file, order, cube_file, print_models, cubes_options, working_dir_prefix, num_threads)
     
-    #cmd = f'grep "Exiting with " {working_dir_prefix}_*/mace.log | grep model | utils/mace4/counter.py'
-    cmd = f'cat {working_dir_prefix}_*/*non_iso_models.out | {mlex_exe} -b1lrmud > ./non_iso_models_{order}_{power}.out'
-    print(f'\n{cmd}\n', flush=True)
-    sp = subprocess.run(cmd, capture_output=True, text=True, check=False, shell=True)
-
     
 def collect_stat(algebra, order, target_cube_length, cube_options, threshold, models_count, gen_cube_time, runtime):
     data_dir = get_data_dir(algebra, order)
@@ -144,8 +139,8 @@ def collect_stat(algebra, order, target_cube_length, cube_options, threshold, mo
 __all__ = ["run_all_cubes", "gen_all_cubes", "collect_stat"]
 
 if __name__ == "__main__":
-    mlex_exe = "../bin/mlex"
-    mace4_exe = "../bin/mace4"
+    mlex_exe = "../../bin/mlex"
+    mace4_exe = "../../bin/mace4"
     cubes_options = 1      # bit-0  set to 1 if use work-stealing
     threshold = 1000       # invariants will be used if number of cubes is above threshhold. Large number to disable invariants
     num_threads = 20
@@ -169,7 +164,7 @@ if __name__ == "__main__":
     if cubes_run_stage == 1:
         os.makedirs("cubes", exist_ok=True)
         cfn = f"cubes/{cube_file}"
-        os.rename(f"utils/mace4/working/{algebra}{order}/{cube_file}", cfn)
+        shutil.copy(f"utils/mace4/working/{algebra}{order}/{cube_file}", cfn)
         with open(cfn) as fp:
             seq = fp.readlines()
         random.shuffle(seq)
