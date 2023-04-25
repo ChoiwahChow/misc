@@ -60,7 +60,7 @@ def conv_a_file(fn, out_file, function = "function(*", delim = "])"):
 if __name__ == "__main__":
     #delim = "])])."
     delim = "])"
-    k = 6
+    k = 13
     if len(sys.argv) > 1:
         k = int(sys.argv[1])
     in_file = f"sapir_monoids/monoids_{k}.out"
