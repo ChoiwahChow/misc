@@ -79,7 +79,7 @@ def witness_violate_sapir(mt):
     return n, ()
 
 
-def find_all_sapir_semigroups(fn, function = "function(*", delim = "])"):
+def find_all_sapir_anti_monoids(fn, function = "function(*", delim = "])"):
     with open(fn) as fp:
         line = fp.readline()
         inter = ""
@@ -128,6 +128,6 @@ if __name__ == "__main__":
   #print(res)
 
   fn = sys.argv[1]
-  find_all_sapir_semigroups(fn)
+  find_all_sapir_anti_monoids(fn)
 
 
