@@ -1,0 +1,97 @@
+============================== Mace4c ==========================================
+Mace4c (64) version 2023-09-A SEP 2023
+Universidade Aberta
+Process 1219920 was started by uabcoimbra on bigbox1
+Fri Nov  1 17:36:39 2024
+The command was "bin/mace4c -n10 -P1 -W-1 -O0 -M3 -m-1 -f inputs/qg5.in"
+============================== end of head =====================================
+
+
+============================== INPUT ===========================================
+
+% Reading from file inputs/qg5.in
+
+
+formulas(assumptions).
+x * y = x * z -> y = z.
+x * y = z * y -> x = z.
+((x * y) * x) * x = y.
+end_of_list.
+assign(domain_size,10) -> assign(start_size,10)
+assign(domain_size,10) -> assign(end_size,10)
+
+% From the command line: assign(domain_size, 10).
+% set(print_models) -> assign(print_models_interp,0)
+% set(print_models) -> clear(print_models_tabular)
+
+% From the command line: set(print_models).
+
+% From the command line: assign(filter_models, -1).
+
+% From the command line: assign(selection_order, 0).
+
+% From the command line: assign(selection_measure, 3).
+
+% From the command line: assign(max_models, -1).
+
+============================== end of input ====================================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ====================
+
+% Formulas that are not ordinary clauses:
+1 x * y = x * z -> y = z # label(non_clause).  [assumption].
+2 x * y = z * y -> x = z # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas =============
+
+============================== CLAUSES FOR SEARCH ==============================
+
+formulas(mace4_clauses)
+x * y != x * z | y = z.
+x * y != z * y | x = z.
+((x * y) * x) * x = y.
+end_of_list.
+
+============================== end of clauses for search =======================
+
+% There are no natural numbers in the input.
+% Search setting: isomorph_free (bool) 1
+% Search setting: lexmin ordering in search (bool) 0
+
+============================== DOMAIN SIZE 10 ==================================
+
+=== Mace4 starting on domain size 10 ===
+
+debug constructor Cube*********************** cubes_options 0 max_pos = 0
+0|*|0  1|*|11  2|*|1  3|*|10  4|*|22  5|*|2  6|*|20  7|*|12  8|*|21  9|*|33  10|*|3  11|*|30  12|*|13  13|*|31  14|*|23  15|*|32  16|*|44  17|*|4  18|*|40  19|*|14  20|*|41  21|*|24  22|*|42  23|*|34  24|*|43  25|*|55  26|*|5  27|*|50  28|*|15  29|*|51  30|*|25  31|*|52  32|*|35  33|*|53  34|*|45  35|*|54  36|*|66  37|*|6  38|*|60  39|*|16  40|*|61  41|*|26  42|*|62  43|*|36  44|*|63  45|*|46  46|*|64  47|*|56  48|*|65  49|*|77  50|*|7  51|*|70  52|*|17  53|*|71  54|*|27  55|*|72  56|*|37  57|*|73  58|*|47  59|*|74  60|*|57  61|*|75  62|*|67  63|*|76  64|*|88  Debug order_cells ********************
+0|0  1|2  2|5  3|10  4|17  5|26  6|37  7|50  8|65  9|82  10|3  11|1  12|7  13|12  14|19  15|28  16|39  17|52  18|67  19|84  20|6  21|8  22|4  23|14  24|21  25|30  26|41  27|54  28|69  29|86  30|11  31|13  32|15  33|9  34|23  35|32  36|43  37|56  38|71  39|88  40|18  41|20  42|22  43|24  44|16  45|34  46|45  47|58  48|73  49|90  50|27  51|29  52|31  53|33  54|35  55|25  56|47  57|60  58|75  59|92  60|38  61|40  62|42  63|44  64|46  Debug real_depths end ******************** mult_table_size: 100 Number_of_cells:200
+Debug ******************** cut_off: 90
+
+============================== STATISTICS ======================================
+
+For domain size 10.
+
+Current CPU time: 0.00 seconds (total CPU time: 2.36 seconds).
+Ground clauses: seen=2100, kept=1900.
+Selections=1405, assignments=13819, propagations=27370, current_models=0.
+Rewrite_terms=31766972, rewrite_bools=7982926, indexes=930872.
+Rules_from_neg_clauses=240750, cross_offs=9957148.
+Number of cubes processed: 1765, Number of cubes cut: 360
+
+============================== end of statistics ===============================
+Total lexmin time 0.000000 seconds
+Total model time 0.000000 seconds
+Total # lexmin model calls 0
+
+Maximum resident size: 0.006832 GB
+
+=====================================
+
+User_CPU=2.36, System_CPU=0.00, Wall_clock=2.
+
+Exiting with failure.
+
+------ process 1219920 exit (exhausted) ------
+
+Process 1219920 exit (exhausted) Fri Nov  1 17:36:41 2024
+The process finished Fri Nov  1 17:36:41 2024

@@ -1,0 +1,147 @@
+============================== Mace4c ==========================================
+Mace4c (64) version 2023-09-A SEP 2023
+Universidade Aberta
+Process 1219952 was started by uabcoimbra on bigbox1
+Fri Nov  1 17:39:04 2024
+The command was "bin/mace4c -n7 -P1 -W-1 -O0 -M3 -m-1 -f inputs/qg5.in"
+============================== end of head =====================================
+
+
+============================== INPUT ===========================================
+
+% Reading from file inputs/qg5.in
+
+
+formulas(assumptions).
+x * y = x * z -> y = z.
+x * y = z * y -> x = z.
+((x * y) * x) * x = y.
+end_of_list.
+assign(domain_size,7) -> assign(start_size,7)
+assign(domain_size,7) -> assign(end_size,7)
+
+% From the command line: assign(domain_size, 7).
+% set(print_models) -> assign(print_models_interp,0)
+% set(print_models) -> clear(print_models_tabular)
+
+% From the command line: set(print_models).
+
+% From the command line: assign(filter_models, -1).
+
+% From the command line: assign(selection_order, 0).
+
+% From the command line: assign(selection_measure, 3).
+
+% From the command line: assign(max_models, -1).
+
+============================== end of input ====================================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ====================
+
+% Formulas that are not ordinary clauses:
+1 x * y = x * z -> y = z # label(non_clause).  [assumption].
+2 x * y = z * y -> x = z # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas =============
+
+============================== CLAUSES FOR SEARCH ==============================
+
+formulas(mace4_clauses)
+x * y != x * z | y = z.
+x * y != z * y | x = z.
+((x * y) * x) * x = y.
+end_of_list.
+
+============================== end of clauses for search =======================
+
+% There are no natural numbers in the input.
+% Search setting: isomorph_free (bool) 1
+% Search setting: lexmin ordering in search (bool) 0
+
+============================== DOMAIN SIZE 7 ===================================
+
+=== Mace4 starting on domain size 7 ===
+
+debug constructor Cube*********************** cubes_options 0 max_pos = 0
+0|*|0  1|*|8  2|*|1  3|*|7  4|*|16  5|*|2  6|*|14  7|*|9  8|*|15  9|*|24  10|*|3  11|*|21  12|*|10  13|*|22  14|*|17  15|*|23  16|*|32  17|*|4  18|*|28  19|*|11  20|*|29  21|*|18  22|*|30  23|*|25  24|*|31  25|*|40  26|*|5  27|*|35  28|*|12  29|*|36  30|*|19  31|*|37  32|*|26  33|*|38  34|*|33  35|*|39  36|*|48  37|*|6  38|*|42  39|*|13  40|*|43  41|*|20  42|*|44  43|*|27  44|*|45  45|*|34  46|*|46  47|*|41  48|*|47  Debug order_cells ********************
+0|0  1|2  2|5  3|10  4|17  5|26  6|37  7|3  8|1  9|7  10|12  11|19  12|28  13|39  14|6  15|8  16|4  17|14  18|21  19|30  20|41  21|11  22|13  23|15  24|9  25|23  26|32  27|43  28|18  29|20  30|22  31|24  32|16  33|34  34|45  35|27  36|29  37|31  38|33  39|35  40|25  41|47  42|38  43|40  44|42  45|44  46|46  47|48  48|36  Debug real_depths end ******************** mult_table_size: 49 Number_of_cells:98
+Debug ******************** cut_off: 44
+
+============================== MODEL ===========================================
+
+interpretation( 7, [number=1, seconds=0], [
+
+        function(*(_,_), [
+			   0, 2, 3, 1, 5, 6, 4,
+			   2, 1, 4, 6, 0, 3, 5,
+			   3, 4, 2, 5, 6, 0, 1,
+			   1, 6, 5, 3, 2, 4, 0,
+			   5, 0, 6, 2, 4, 1, 3,
+			   6, 3, 0, 4, 1, 5, 2,
+			   4, 5, 1, 0, 3, 2, 6 ])
+]).
+
+============================== end of model ====================================
+Model 1 has been found.   Fri Nov  1 17:39:04 2024
+
+
+============================== MODEL ===========================================
+
+interpretation( 7, [number=2, seconds=0], [
+
+        function(*(_,_), [
+			   0, 2, 3, 1, 5, 6, 4,
+			   2, 3, 4, 6, 0, 5, 1,
+			   3, 4, 1, 5, 2, 0, 6,
+			   1, 6, 5, 2, 4, 3, 0,
+			   5, 0, 2, 4, 6, 1, 3,
+			   6, 5, 0, 3, 1, 4, 2,
+			   4, 1, 6, 0, 3, 2, 5 ])
+]).
+
+============================== end of model ====================================
+
+============================== MODEL ===========================================
+
+interpretation( 7, [number=3, seconds=0], [
+
+        function(*(_,_), [
+			   1, 2, 0, 3, 5, 6, 4,
+			   2, 3, 4, 6, 0, 5, 1,
+			   0, 4, 6, 1, 3, 2, 5,
+			   3, 6, 1, 5, 4, 0, 2,
+			   5, 0, 3, 4, 2, 1, 6,
+			   6, 5, 2, 0, 1, 4, 3,
+			   4, 1, 5, 2, 6, 3, 0 ])
+]).
+
+============================== end of model ====================================
+
+============================== STATISTICS ======================================
+
+For domain size 7.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.08 seconds).
+Ground clauses: seen=735, kept=637.
+Selections=99, assignments=652, propagations=1609, current_models=3.
+Rewrite_terms=1195208, rewrite_bools=465598, indexes=41219.
+Rules_from_neg_clauses=21862, cross_offs=260308.
+Number of cubes processed: 124, Number of cubes cut: 25
+
+============================== end of statistics ===============================
+Total lexmin time 0.000000 seconds
+Total model time 0.000000 seconds
+Total # lexmin model calls 0
+
+Maximum resident size: 0.005844 GB
+
+=====================================
+
+User_CPU=0.08, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 3 models.
+
+------ process 1219952 exit (all_models) ------
+
+Process 1219952 exit (all_models) Fri Nov  1 17:39:04 2024
+The process finished Fri Nov  1 17:39:04 2024

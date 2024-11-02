@@ -1,0 +1,97 @@
+============================== Mace4c ==========================================
+Mace4c (64) version 2023-09-A SEP 2023
+Universidade Aberta
+Process 1220137 was started by uabcoimbra on bigbox1
+Fri Nov  1 18:07:16 2024
+The command was "bin/mace4c -n14 -P1 -W-1 -O0 -M3 -m-1 -f inputs/qg5.in"
+============================== end of head =====================================
+
+
+============================== INPUT ===========================================
+
+% Reading from file inputs/qg5.in
+
+
+formulas(assumptions).
+x * y = x * z -> y = z.
+x * y = z * y -> x = z.
+((x * y) * x) * x = y.
+end_of_list.
+assign(domain_size,14) -> assign(start_size,14)
+assign(domain_size,14) -> assign(end_size,14)
+
+% From the command line: assign(domain_size, 14).
+% set(print_models) -> assign(print_models_interp,0)
+% set(print_models) -> clear(print_models_tabular)
+
+% From the command line: set(print_models).
+
+% From the command line: assign(filter_models, -1).
+
+% From the command line: assign(selection_order, 0).
+
+% From the command line: assign(selection_measure, 3).
+
+% From the command line: assign(max_models, -1).
+
+============================== end of input ====================================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ====================
+
+% Formulas that are not ordinary clauses:
+1 x * y = x * z -> y = z # label(non_clause).  [assumption].
+2 x * y = z * y -> x = z # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas =============
+
+============================== CLAUSES FOR SEARCH ==============================
+
+formulas(mace4_clauses)
+x * y != x * z | y = z.
+x * y != z * y | x = z.
+((x * y) * x) * x = y.
+end_of_list.
+
+============================== end of clauses for search =======================
+
+% There are no natural numbers in the input.
+% Search setting: isomorph_free (bool) 1
+% Search setting: lexmin ordering in search (bool) 0
+
+============================== DOMAIN SIZE 14 ==================================
+
+=== Mace4 starting on domain size 14 ===
+
+debug constructor Cube*********************** cubes_options 0 max_pos = 0
+0|*|0  1|*|15  2|*|1  3|*|14  4|*|30  5|*|2  6|*|28  7|*|16  8|*|29  9|*|45  10|*|3  11|*|42  12|*|17  13|*|43  14|*|31  15|*|44  16|*|60  17|*|4  18|*|56  19|*|18  20|*|57  21|*|32  22|*|58  23|*|46  24|*|59  25|*|75  26|*|5  27|*|70  28|*|19  29|*|71  30|*|33  31|*|72  32|*|47  33|*|73  34|*|61  35|*|74  36|*|90  37|*|6  38|*|84  39|*|20  40|*|85  41|*|34  42|*|86  43|*|48  44|*|87  45|*|62  46|*|88  47|*|76  48|*|89  49|*|105  50|*|7  51|*|98  52|*|21  53|*|99  54|*|35  55|*|100  56|*|49  57|*|101  58|*|63  59|*|102  60|*|77  61|*|103  62|*|91  63|*|104  64|*|120  Debug order_cells ********************
+0|0  1|2  2|5  3|10  4|17  5|26  6|37  7|50  8|65  9|82  10|101  11|122  12|145  13|170  14|3  15|1  16|7  17|12  18|19  19|28  20|39  21|52  22|67  23|84  24|103  25|124  26|147  27|172  28|6  29|8  30|4  31|14  32|21  33|30  34|41  35|54  36|69  37|86  38|105  39|126  40|149  41|174  42|11  43|13  44|15  45|9  46|23  47|32  48|43  49|56  50|71  51|88  52|107  53|128  54|151  55|176  56|18  57|20  58|22  59|24  60|16  61|34  62|45  63|58  64|73  Debug real_depths end ******************** mult_table_size: 196 Number_of_cells:392
+Debug ******************** cut_off: 176
+
+============================== STATISTICS ======================================
+
+For domain size 14.
+
+Current CPU time: 0.00 seconds (total CPU time: 21577.94 seconds).
+Ground clauses: seen=5684, kept=5292.
+Selections=7365864, assignments=103120622, propagations=158214623, current_models=0.
+Rewrite_terms=3283496490, rewrite_bools=1283403992, indexes=1871681203.
+Rules_from_neg_clauses=1522012439, cross_offs=3551400126.
+Number of cubes processed: 7441928, Number of cubes cut: 76064
+
+============================== end of statistics ===============================
+Total lexmin time 0.000000 seconds
+Total model time 0.000000 seconds
+Total # lexmin model calls 0
+
+Maximum resident size: 1.440328 GB
+
+=====================================
+
+User_CPU=21577.94, System_CPU=4.79, Wall_clock=21583.
+
+Exiting with failure.
+
+------ process 1220137 exit (exhausted) ------
+
+Process 1220137 exit (exhausted) Sat Nov  2 00:06:59 2024
+The process finished Sat Nov  2 00:06:59 2024

@@ -1,0 +1,143 @@
+============================== Mace4c ==========================================
+Mace4c (64) version 2023-09-A SEP 2023
+Universidade Aberta
+Process 1220006 was started by uabcoimbra on bigbox1
+Fri Nov  1 17:44:55 2024
+The command was "bin/mace4c -n13 -P1 -W-1 -O0 -M3 -m-1 -f inputs/qg5.in"
+============================== end of head =====================================
+
+
+============================== INPUT ===========================================
+
+% Reading from file inputs/qg5.in
+
+
+formulas(assumptions).
+x * y = x * z -> y = z.
+x * y = z * y -> x = z.
+((x * y) * x) * x = y.
+end_of_list.
+assign(domain_size,13) -> assign(start_size,13)
+assign(domain_size,13) -> assign(end_size,13)
+
+% From the command line: assign(domain_size, 13).
+% set(print_models) -> assign(print_models_interp,0)
+% set(print_models) -> clear(print_models_tabular)
+
+% From the command line: set(print_models).
+
+% From the command line: assign(filter_models, -1).
+
+% From the command line: assign(selection_order, 0).
+
+% From the command line: assign(selection_measure, 3).
+
+% From the command line: assign(max_models, -1).
+
+============================== end of input ====================================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ====================
+
+% Formulas that are not ordinary clauses:
+1 x * y = x * z -> y = z # label(non_clause).  [assumption].
+2 x * y = z * y -> x = z # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas =============
+
+============================== CLAUSES FOR SEARCH ==============================
+
+formulas(mace4_clauses)
+x * y != x * z | y = z.
+x * y != z * y | x = z.
+((x * y) * x) * x = y.
+end_of_list.
+
+============================== end of clauses for search =======================
+
+% There are no natural numbers in the input.
+% Search setting: isomorph_free (bool) 1
+% Search setting: lexmin ordering in search (bool) 0
+
+============================== DOMAIN SIZE 13 ==================================
+
+=== Mace4 starting on domain size 13 ===
+
+debug constructor Cube*********************** cubes_options 0 max_pos = 0
+0|*|0  1|*|14  2|*|1  3|*|13  4|*|28  5|*|2  6|*|26  7|*|15  8|*|27  9|*|42  10|*|3  11|*|39  12|*|16  13|*|40  14|*|29  15|*|41  16|*|56  17|*|4  18|*|52  19|*|17  20|*|53  21|*|30  22|*|54  23|*|43  24|*|55  25|*|70  26|*|5  27|*|65  28|*|18  29|*|66  30|*|31  31|*|67  32|*|44  33|*|68  34|*|57  35|*|69  36|*|84  37|*|6  38|*|78  39|*|19  40|*|79  41|*|32  42|*|80  43|*|45  44|*|81  45|*|58  46|*|82  47|*|71  48|*|83  49|*|98  50|*|7  51|*|91  52|*|20  53|*|92  54|*|33  55|*|93  56|*|46  57|*|94  58|*|59  59|*|95  60|*|72  61|*|96  62|*|85  63|*|97  64|*|112  Debug order_cells ********************
+0|0  1|2  2|5  3|10  4|17  5|26  6|37  7|50  8|65  9|82  10|101  11|122  12|145  13|3  14|1  15|7  16|12  17|19  18|28  19|39  20|52  21|67  22|84  23|103  24|124  25|147  26|6  27|8  28|4  29|14  30|21  31|30  32|41  33|54  34|69  35|86  36|105  37|126  38|149  39|11  40|13  41|15  42|9  43|23  44|32  45|43  46|56  47|71  48|88  49|107  50|128  51|151  52|18  53|20  54|22  55|24  56|16  57|34  58|45  59|58  60|73  61|90  62|109  63|130  64|153  Debug real_depths end ******************** mult_table_size: 169 Number_of_cells:338
+Debug ******************** cut_off: 152
+
+============================== MODEL ===========================================
+
+interpretation( 13, [number=1, seconds=860], [
+
+        function(*(_,_), [
+			   0, 2, 3, 1, 5, 6, 4, 8, 9, 7,11,12,10,
+			   2,10, 4, 6, 0, 7,12, 9, 1, 5, 8,11, 3,
+			   3, 4,11, 5,10, 0, 8, 6, 7, 2, 1, 9,12,
+			   1, 6, 5,12, 9,11, 0, 3, 4, 8,10, 2, 7,
+			   5, 0,10, 9, 7, 1, 3,11, 8, 6,12, 4, 2,
+			   6, 7, 0,11, 1, 8, 2, 4,12, 9, 3,10, 5,
+			   4,12, 8, 0, 3, 2, 9, 7, 5,10, 6, 1,11,
+			   8, 9, 6, 3,11, 4, 7, 2,10,12, 0, 5, 1,
+			   9, 1, 7, 4, 8,12, 5,10, 3,11, 2, 0, 6,
+			   7, 5, 2, 8, 6, 9,10,12,11, 1, 4, 3, 0,
+			  11, 8, 1,10,12, 3, 6, 0, 2, 4, 5, 7, 9,
+			  12,11, 9, 2, 4,10, 1, 5, 0, 3, 7, 6, 8,
+			  10, 3,12, 7, 2, 5,11, 1, 6, 0, 9, 8, 4 ])
+]).
+
+============================== end of model ====================================
+Model 1 has been found.   Fri Nov  1 17:59:17 2024
+
+
+============================== MODEL ===========================================
+
+interpretation( 13, [number=2, seconds=863], [
+
+        function(*(_,_), [
+			   0, 2, 3, 1, 5, 6, 4, 8, 9, 7,11,12,10,
+			   2, 9, 4, 6, 0, 7,12,11, 1, 8,10, 5, 3,
+			   3, 4, 7, 5,10, 0, 8, 9,12, 2, 1,11, 6,
+			   1, 6, 5, 8, 9,11, 0, 3, 7,10, 4, 2,12,
+			   5, 0,10, 9,12, 1, 3, 7, 2, 6, 8, 4,11,
+			   6, 7, 0,11, 1,10, 2, 4, 8, 3,12, 9, 5,
+			   4,12, 8, 0, 3, 2,11, 1, 5, 9, 6,10, 7,
+			   8,11, 9, 3, 7, 4, 1, 5,10,12, 0, 6, 2,
+			   9, 1,12, 7, 2, 8, 5,10, 6,11, 3, 0, 4,
+			   7, 8, 2,10, 6, 3, 9,12,11, 4, 5, 1, 0,
+			  11,10, 1, 4, 8,12, 6, 0, 3, 5, 2, 7, 9,
+			  12, 5,11, 2, 4, 9,10, 6, 0, 1, 7, 3, 8,
+			  10, 3, 6,12,11, 5, 7, 2, 4, 0, 9, 8, 1 ])
+]).
+
+============================== end of model ====================================
+
+============================== STATISTICS ======================================
+
+For domain size 13.
+
+Current CPU time: 0.00 seconds (total CPU time: 1093.77 seconds).
+Ground clauses: seen=4563, kept=4225.
+Selections=447041, assignments=5810571, propagations=9901194, current_models=2.
+Rewrite_terms=1512104093, rewrite_bools=594892272, indexes=349688302.
+Rules_from_neg_clauses=89801923, cross_offs=3564199839.
+Number of cubes processed: 461485, Number of cubes cut: 14444
+
+============================== end of statistics ===============================
+Total lexmin time 0.000000 seconds
+Total model time 0.000000 seconds
+Total # lexmin model calls 0
+
+Maximum resident size: 0.087772 GB
+
+=====================================
+
+User_CPU=1093.77, System_CPU=0.28, Wall_clock=1094.
+
+Exiting with 2 models.
+
+------ process 1220006 exit (all_models) ------
+
+Process 1220006 exit (all_models) Fri Nov  1 18:03:09 2024
+The process finished Fri Nov  1 18:03:09 2024

@@ -1,0 +1,112 @@
+============================== Mace4c ==========================================
+Mace4c (64) version 2023-09-A SEP 2023
+Universidade Aberta
+Process 1219979 was started by uabcoimbra on bigbox1
+Fri Nov  1 17:41:11 2024
+The command was "bin/mace4c -n4 -P1 -W-1 -O0 -M3 -m-1 -f inputs/qg5.in"
+============================== end of head =====================================
+
+
+============================== INPUT ===========================================
+
+% Reading from file inputs/qg5.in
+
+
+formulas(assumptions).
+x * y = x * z -> y = z.
+x * y = z * y -> x = z.
+((x * y) * x) * x = y.
+end_of_list.
+assign(domain_size,4) -> assign(start_size,4)
+assign(domain_size,4) -> assign(end_size,4)
+
+% From the command line: assign(domain_size, 4).
+% set(print_models) -> assign(print_models_interp,0)
+% set(print_models) -> clear(print_models_tabular)
+
+% From the command line: set(print_models).
+
+% From the command line: assign(filter_models, -1).
+
+% From the command line: assign(selection_order, 0).
+
+% From the command line: assign(selection_measure, 3).
+
+% From the command line: assign(max_models, -1).
+
+============================== end of input ====================================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ====================
+
+% Formulas that are not ordinary clauses:
+1 x * y = x * z -> y = z # label(non_clause).  [assumption].
+2 x * y = z * y -> x = z # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas =============
+
+============================== CLAUSES FOR SEARCH ==============================
+
+formulas(mace4_clauses)
+x * y != x * z | y = z.
+x * y != z * y | x = z.
+((x * y) * x) * x = y.
+end_of_list.
+
+============================== end of clauses for search =======================
+
+% There are no natural numbers in the input.
+% Search setting: isomorph_free (bool) 1
+% Search setting: lexmin ordering in search (bool) 0
+
+============================== DOMAIN SIZE 4 ===================================
+
+=== Mace4 starting on domain size 4 ===
+
+debug constructor Cube*********************** cubes_options 0 max_pos = 0
+0|*|0  1|*|5  2|*|1  3|*|4  4|*|10  5|*|2  6|*|8  7|*|6  8|*|9  9|*|15  10|*|3  11|*|12  12|*|7  13|*|13  14|*|11  15|*|14  Debug order_cells ********************
+0|0  1|2  2|5  3|10  4|3  5|1  6|7  7|12  8|6  9|8  10|4  11|14  12|11  13|13  14|15  15|9  Debug real_depths end ******************** mult_table_size: 16 Number_of_cells:32
+Debug ******************** cut_off: 14
+
+============================== MODEL ===========================================
+
+interpretation( 4, [number=1, seconds=0], [
+
+        function(*(_,_), [
+			   0, 2, 3, 1,
+			   2, 0, 1, 3,
+			   3, 1, 0, 2,
+			   1, 3, 2, 0 ])
+]).
+
+============================== end of model ====================================
+Model 1 has been found.   Fri Nov  1 17:41:11 2024
+
+
+============================== STATISTICS ======================================
+
+For domain size 4.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=144, kept=112.
+Selections=7, assignments=22, propagations=48, current_models=1.
+Rewrite_terms=10001, rewrite_bools=3639, indexes=586.
+Rules_from_neg_clauses=384, cross_offs=2128.
+Number of cubes processed: 7, Number of cubes cut: 0
+
+============================== end of statistics ===============================
+Total lexmin time 0.000000 seconds
+Total model time 0.000000 seconds
+Total # lexmin model calls 0
+
+Maximum resident size: 0.005756 GB
+
+=====================================
+
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+------ process 1219979 exit (all_models) ------
+
+Process 1219979 exit (all_models) Fri Nov  1 17:41:11 2024
+The process finished Fri Nov  1 17:41:11 2024
