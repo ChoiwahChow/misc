@@ -1,0 +1,84 @@
+============================== Mace4c ==========================================
+Mace4c (64) version 2023-09-A SEP 2023
+Universidade Aberta
+Process 1220685 was started by uabcoimbra on bigbox1
+Fri Nov  1 19:56:15 2024
+The command was "bin/mace4c -n11 -P1 -m-1 -f inputs/qg5.in"
+============================== end of head =====================================
+
+
+============================== INPUT ===========================================
+
+% Reading from file inputs/qg5.in
+
+
+formulas(assumptions).
+x * y = x * z -> y = z.
+x * y = z * y -> x = z.
+((x * y) * x) * x = y.
+end_of_list.
+assign(domain_size,11) -> assign(start_size,11)
+assign(domain_size,11) -> assign(end_size,11)
+
+% From the command line: assign(domain_size, 11).
+% set(print_models) -> assign(print_models_interp,0)
+% set(print_models) -> clear(print_models_tabular)
+
+% From the command line: set(print_models).
+
+% From the command line: assign(max_models, -1).
+
+============================== end of input ====================================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ====================
+
+% Formulas that are not ordinary clauses:
+1 x * y = x * z -> y = z # label(non_clause).  [assumption].
+2 x * y = z * y -> x = z # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas =============
+
+============================== CLAUSES FOR SEARCH ==============================
+
+formulas(mace4_clauses)
+x * y != x * z | y = z.
+x * y != z * y | x = z.
+((x * y) * x) * x = y.
+end_of_list.
+
+============================== end of clauses for search =======================
+
+% There are no natural numbers in the input.
+% Search setting: isomorph_free (bool) 0
+% Search setting: lexmin ordering in search (bool) 0
+
+============================== DOMAIN SIZE 11 ==================================
+
+=== Mace4 starting on domain size 11 ===
+
+debug constructor Cube*********************** cubes_options 0 max_pos = 0
+0|*|0  1|*|12  2|*|1  3|*|11  4|*|24  5|*|2  6|*|22  7|*|13  8|*|23  9|*|36  10|*|3  11|*|33  12|*|14  13|*|34  14|*|25  15|*|35  16|*|48  17|*|4  18|*|44  19|*|15  20|*|45  21|*|26  22|*|46  23|*|37  24|*|47  25|*|60  26|*|5  27|*|55  28|*|16  29|*|56  30|*|27  31|*|57  32|*|38  33|*|58  34|*|49  35|*|59  36|*|72  37|*|6  38|*|66  39|*|17  40|*|67  41|*|28  42|*|68  43|*|39  44|*|69  45|*|50  46|*|70  47|*|61  48|*|71  49|*|84  50|*|7  51|*|77  52|*|18  53|*|78  54|*|29  55|*|79  56|*|40  57|*|80  58|*|51  59|*|81  60|*|62  61|*|82  62|*|73  63|*|83  64|*|96  Debug order_cells ********************
+0|0  1|2  2|5  3|10  4|17  5|26  6|37  7|50  8|65  9|82  10|101  11|3  12|1  13|7  14|12  15|19  16|28  17|39  18|52  19|67  20|84  21|103  22|6  23|8  24|4  25|14  26|21  27|30  28|41  29|54  30|69  31|86  32|105  33|11  34|13  35|15  36|9  37|23  38|32  39|43  40|56  41|71  42|88  43|107  44|18  45|20  46|22  47|24  48|16  49|34  50|45  51|58  52|73  53|90  54|109  55|27  56|29  57|31  58|33  59|35  60|25  61|47  62|60  63|75  64|92  Debug real_depths end ******************** mult_table_size: 121 Number_of_cells:242
+Debug ******************** cut_off: 108
+
+============================== MODEL ===========================================
+
+interpretation( 11, [number=1, seconds=407591], [
+
+        function(*(_,_), [
+			   0, 2, 3, 4, 5, 1, 7, 8, 9,10, 6,
+			   3, 1, 6, 2, 9, 7, 8,10, 0, 5, 4,
+			   4, 8, 2, 7, 3,10, 5, 9, 6, 0, 1,
+			   5, 6, 9, 3, 8, 4, 2, 1,10, 7, 0,
+			   1, 5, 7,10, 4, 9, 0, 3, 2, 6, 8,
+			   2,10, 1, 8, 6, 5, 9, 0, 4, 3, 7,
+			   8, 0,10, 9, 1, 3, 6, 4, 7, 2, 5,
+			   9, 4, 0, 6,10, 2, 1, 7, 5, 8, 3,
+			  10, 3, 5, 0, 7, 6, 4, 2, 8, 1, 9,
+			   6, 7, 4, 1, 0, 8,10, 5, 3, 9, 2,
+			   7, 9, 8, 5, 2, 0, 3, 6, 1, 4,10 ])
+]).
+
+============================== end of model ====================================
+Model 1 has been found.   Wed Nov  6 13:12:10 2024
+
