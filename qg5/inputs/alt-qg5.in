@@ -1,0 +1,14 @@
+
+
+formulas(assumptions).
+
+x * y = x * z -> y = z.
+x * y = z * y -> x = z.
+
+((y * x) * y) * y = x.  % QG5
+
+y * ((x * y) * y) = x.  % logical equivalent
+(y * (x * y)) * y = x.  % logical equivalent
+
+end_of_list.
+
