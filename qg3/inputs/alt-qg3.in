@@ -1,0 +1,23 @@
+
+
+formulas(assumptions).
+
+x * y = x * z -> y = z.  % Latin square
+x * y = z * y -> x = z.  % Latin square
+
+(x * y) * (y * x) = x.   % QG3
+
+% Colton, S., & Miguel, I. (2001). Constraint generation via automated theory formation. 
+% In Principles and Practice of Constraint Programming—CP 2001: 7th International Conference, CP 2001 Paphos, Cyprus, 
+% November 26–December 1, 2001 Proceedings 7 (pp. 575-579). Springer Berlin Heidelberg.
+% note: C3,2 and C3,3 do not help for the case of idempotent QG3
+% C3,1 involves existential quantifier and would only slow the process
+% x * x = y -> y * y = x.  % additional  C3,3
+% x * y = y -> y * x = x.  % additional  C3,2
+x * y = y * x -> x = y.   % additional non-abelian  C3,4
+
+% (y * (y * x) = x & (x * y) * y = x) -> y = x.     % additional
+
+
+end_of_list.
+

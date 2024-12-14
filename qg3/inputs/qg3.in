@@ -1,0 +1,11 @@
+
+
+formulas(assumptions).
+
+x * y = x * z -> y = z.
+x * y = z * y -> x = z.
+
+(x * y) * (y * x) = x.
+
+end_of_list.
+
